@@ -27,6 +27,11 @@
   color: #61dafb;
 }
 
+.App-main {
+  height: calc(100vh - 50px);
+  overflow: auto;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -63,6 +68,10 @@
 
 .cfsrow .cfscell:nth-child(2) {
   text-align: left;
+  max-width: 300px;
+  min-width: 300px;
+  word-wrap: break-word;
+  
 }
 
 .cfscell {

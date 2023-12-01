@@ -1,22 +1,17 @@
 import {
   Label,
-  SubmitButton,
   BoxContainer,
 } from "../components";
 
 export const ConfirmPage = ( props ) => {
-  const { onSubmit } = props;
-  const onClick = () => {
-    onSubmit();
-  }
+  const { logo } = props;
   return (
     <BoxContainer>
-      <Label text="Successed! 🙂" />
-      <Label text="We appreciate your feedback and 5-star rating! Our team aims to make our customers happy. Thank you. 🙂" />
-
-      <SubmitButton onClick={onClick}>
-      Confirm
-      </SubmitButton>
+      <br />
+      {logo !== null && <img src={logo} style={{width: '350px'}} alt="logo" />}
+      <br />
+      <br />
+      <Label text="We received your feedback. Thanks! 🙂" />
     </BoxContainer>
   );
 };
