@@ -22,7 +22,7 @@ export const AdminPage = () => {
   // const navigate = useNavigate();
 
   const isPaid = useSelector(state => state.company.isPaid);
-  const company = useSelector(state => state.company);
+  // const company = useSelector(state => state.company);
   const review_normal = useSelector(state => state.review);
   const review_detail = useSelector(state => state.reviewdetail);
   const recent = useSelector(state => state.reviewrecent);
