@@ -5,5 +5,7 @@ export * from "./SubmitButton";
 export * from "./DrawerHeader";
 export * from "./BoxContainer";
 export * from "./InputBox";
+export * from "./InputBoxPhone";
 export * from "./PageContainer";
 export * from "./PageBox";
+export * from "./Footer";

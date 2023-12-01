@@ -1,33 +1,37 @@
 import {
   InputBox,
+  InputBoxPhone,
   Label,
   SubmitButton,
   BoxContainer,
 } from "../components";
 
 export const InfoPage = ( props ) => {
-  const { name, setName, email, setEmail, phone, setPhone, onSubmit } = props;
-
+  const { name, setName, email, setEmail, phone, setPhone, onSubmit, button, logo } = props;
   const onClick = () => {
     onSubmit();
   }
 
   return (
     <BoxContainer>
-      <Label text="Please leave any contact information to make the manager reaches you." />
+      <br />
+      {logo !== null && <img src={logo} style={{width: '350px'}} alt="logo" />}
+      <br />
+      <br />
+      <Label text="If you want the manager to follow up with you, please leave your contact information. (optional)" />
       <Label text="" />
 
       <Label text="Name" />
-      <InputBox value={name} func={setName} />
+      <InputBox value={name} func={setName} regexp={/^[a-zA-Z ]+$/} />
 
       <Label text="Email" />
-      <InputBox value={email} func={setEmail} />
+      <InputBox value={email} func={setEmail} regexp={/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/} />
 
       <Label text="Phone" />
-      <InputBox value={phone} func={setPhone} />
+      <InputBoxPhone value={phone} func={setPhone} regexp={/^[+\-() \d]{10,}$/} />
 
-      <SubmitButton onClick={onClick}>
-        Submit
+      <SubmitButton onClick={onClick} button={button}>
+        DONE
       </SubmitButton>
     </BoxContainer>
   );

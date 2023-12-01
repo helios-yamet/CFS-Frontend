@@ -4,7 +4,26 @@ export const detailReviewRating = {
   cleanliness: 0,
   price: 0,
   quality: 0
-}
+};
+
+export const sampleManagerInfo = [
+  {
+    email: "",
+    phone: "",
+  },
+  {
+    email: "",
+    phone: "",
+  },
+  {
+    email: "",
+    phone: "",
+  },
+  {
+    email: "",
+    phone: "",
+  },
+];
 
 export const detailReviewKey = [
   { text: "Wait Time", rkey: "wait" },
@@ -12,7 +31,7 @@ export const detailReviewKey = [
   { text: "Cleanliness", rkey: "cleanliness" },
   { text: "Value and Price", rkey: "price" },
   { text: "Quality of Products", rkey: "quality" },
-]
+];
 
 export const series = [
   {

@@ -5,11 +5,11 @@ export const LandingPage = () => {
   return(
     <Box
       sx={{
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "left",
-      flexDirection: "column",
-      margin: '0 24px 0 24px',
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "left",
+        flexDirection: "column",
+        margin: '0 24px 0 24px',
       }}
     >
       <h1>LeaveFeedback</h1>

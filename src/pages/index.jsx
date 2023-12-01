@@ -7,3 +7,4 @@ export * from './reviewpage';
 export * from './infopage';
 export * from './registerpage';
 export * from './confirmpage';
+export * from './uploadpage';

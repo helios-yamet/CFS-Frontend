@@ -2,7 +2,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { detailReviewRating } from "../constants";
 import { modify, send } from "../redux/actions";
-// import LogoIcon from "../assets/images/logo.png"
 import {
   Homepage,
   GoogleReviewPage,
@@ -11,14 +10,10 @@ import {
   ConfirmPage,
 } from "./";
 import {
-  // LinkItem,
-  // DrawerHeader,
   PageContainer,
   PageBox,
-  Label,
-  SubmitButton,
 } from "../components";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, useLocation } from "react-router-dom";
 import { exists } from "../redux/actions/user";
 
 export const ClientPage = () => {
@@ -26,12 +21,13 @@ export const ClientPage = () => {
 
   const params = useParams();
   const status = useSelector((state) => state.status);
-  // const company = useSelector(state => state.company);
-  // const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const [exist, setExist] = useState(0);
   const [google, setGoogle] = useState("");
+  const [button, setButton] = useState("");
+  const [logo, setLogo] = useState("");
+  const [star, setStar] = useState("");
 
   const [rating, setRating] = useState(0);
   const [review, setReview] = useState("");
@@ -43,6 +39,8 @@ export const ClientPage = () => {
   const [sign, setSign] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+
+  const location = useLocation();
 
   const onSubmitReview = () => {
     send(
@@ -87,38 +85,51 @@ export const ClientPage = () => {
     exists(
       params.id,
       (result) => setExist(result + 1),
-      (result) => setGoogle(result)
+      (result) => {
+        setGoogle(result.google);
+        setLogo(result.logo);
+        setStar(result.star);
+        setButton(result.button);
+      }
     );
   }, [params.id]);
 
   return (
     <PageContainer>
       <PageBox>
-        {/* <DrawerHeader sx={{ justifyContent: "center", mt: 1 }}>
-          <LinkItem to="/"><img src={LogoIcon} alt="Logo" /></LinkItem>
-        </DrawerHeader> */}
         {status === 0 && exist === 2 && (
           <Homepage
             rating={rating}
             setRating={setRating}
             review={review}
             setReview={setReview}
+            logo={logo}
+            star={star}
+            button={button}
           />
         )}
         {status === 1 && exist === 2 && (
-          <GoogleReviewPage hasGoogle={google} onSubmit={onSubmitReview} />
+          <GoogleReviewPage 
+            hasGoogle={google} 
+            button={button} 
+            logo={logo}
+            onSubmit={onSubmitReview}
+          />
         )}
         {status === 2 && exist === 2 && (
           <ReviewPage
+            logo={logo}
             rating={drating}
             setRating={setDRating}
             review={dreview}
             setReview={setDReview}
             onSubmit={onSubmitReview}
+            button={button}
           />
         )}
         {status === 3 && exist === 2 && (
           <InfoPage
+            logo={logo}
             name={sign}
             setName={setSign}
             email={email}
@@ -126,21 +137,15 @@ export const ClientPage = () => {
             phone={phone}
             setPhone={setPhone}
             onSubmit={onSubmitInfo}
+            button={button}
           />
         )}
         {status === 4 && exist === 2 && (
-          <ConfirmPage onSubmit={onSubmitConfirm} />
+          <ConfirmPage onSubmit={onSubmitConfirm} logo={logo} />
         )}
         {exist === 1 && (
           <>
-            <Label text="Oops ! Cannot find page" />
-            <SubmitButton
-              onClick={() => {
-                navigate("/");
-              }}
-            >
-              Go to homepage
-            </SubmitButton>
+            {navigate(location.pathname+"/admin")}
           </>
         )}
       </PageBox>

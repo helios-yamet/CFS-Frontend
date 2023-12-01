@@ -1,17 +1,19 @@
 import { Typography } from "@mui/material"
 
 export const Label = (props) => {
-  const { text } = props;
+  const { text, lineHeight, fontWeight, fontSize } = props;
 
   return (
     <Typography
       component="h1"
       sx={{
+        fontSize: fontSize||18,
         fontFamily: "Arial Light",
-        fontWeight: 800,
+        fontWeight: fontWeight||800,
         mb: 2,
         letterSpacing: 1,
-        mt: 3
+        mt: 3,
+        lineHeight: lineHeight,
       }}
     >
       {text}
