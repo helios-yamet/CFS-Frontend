@@ -6,7 +6,8 @@ import { useDispatch } from "react-redux";
 import { receive, receiveDetailReview, receiveRecent } from "../redux/actions";
 import './../App.css';
 import { series, title } from "../constants";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
+// import { exists } from "../redux/actions/user";
 
 const valueFormatter = value => `${value===null?"0":value.toFixed(1)}%`;
 
@@ -16,16 +17,16 @@ export const AdminPage = () => {
     height: 200,
     marginLeft: 100
   };
-  const company = useSelector(state => state.company);
-  const navigate = useNavigate();
+  // const company = useSelector(state => state.company);
+  // const navigate = useNavigate();
   const params = useParams();
   const dispatch = useDispatch();
 
   const review_normal = useSelector(state => state.review);
   const review_detail = useSelector(state => state.reviewdetail);
+  const recent = useSelector(state => state.reviewrecent);
   const [detail, setDetail] = useState(series);
   const [average, setAverage] = useState(0);
-  const recent = useSelector(state => state.reviewrecent);
 
   useEffect(() => {
     dispatch(receive(params.id));
@@ -34,10 +35,10 @@ export const AdminPage = () => {
   }, [dispatch, params.id])
 
   useEffect(() => {
-    if(company !== params.id){
-      console.log("Dismatch----------------->", company, params);
-      navigate("/admin");
-    }
+    // if(company !== params.id){
+    //   console.log("Dismatch----------------->", company, params);
+    //   navigate("/admin");
+    // }
   })
 
   useEffect(() => {

@@ -1,25 +1,22 @@
 import {
-    Label,
-    SubmitButton,
-    BoxContainer,
+  Label,
+  SubmitButton,
+  BoxContainer,
 } from "../components";
-import { useDispatch } from "react-redux";
 
 export const ConfirmPage = ( props ) => {
-    const dispatch = useDispatch();
-    const { onSubmit } = props;
-    const onClick = () => {
-        onSubmit();
-        
-    }
-    return (
-        <BoxContainer>
-        <Label text="Successed! 🙂" />
+  const { onSubmit } = props;
+  const onClick = () => {
+    onSubmit();
+  }
+  return (
+    <BoxContainer>
+      <Label text="Successed! 🙂" />
+      <Label text="We appreciate your feedback and 5-star rating! Our team aims to make our customers happy. Thank you. 🙂" />
 
-
-        <SubmitButton onClick={onClick}>
-            Confirm
-        </SubmitButton>
-        </BoxContainer>
-    );
+      <SubmitButton onClick={onClick}>
+      Confirm
+      </SubmitButton>
+    </BoxContainer>
+  );
 };

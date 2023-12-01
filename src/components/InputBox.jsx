@@ -1,13 +1,7 @@
 import { TextField } from "@mui/material";
 
 export const InputBox = (props) => {
-  const {
-    value,
-    func,
-    multiline,
-    password,
-    placeholder,
-  } = props;
+  const { value, func, multiline, password, placeholder } = props;
 
   return (
     <>
@@ -22,10 +16,10 @@ export const InputBox = (props) => {
         defaultValue=""
         value={value}
         color="primary"
-        onChange={ event => {
+        onChange={(event) => {
           func(event.target.value);
         }}
       />
     </>
-  )
-}
+  );
+};

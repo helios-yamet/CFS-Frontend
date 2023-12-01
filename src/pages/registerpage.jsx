@@ -15,7 +15,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 export const RegisterPage = () => {
-  const company = useSelector(state => state.company);
+  const company = useSelector((state) => state.company);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -30,26 +30,25 @@ export const RegisterPage = () => {
       name: name,
       email: email,
       pass: pass,
-    }
-  }
+    };
+  };
   const onSignin = () => {
-    if(state) setState(false);
+    if (state) setState(false);
     else dispatch(SignIn(getValue()));
-  }
+  };
   const onSignup = () => {
-    if(!state) setState(true);
+    if (!state) setState(true);
     else {
-      if(pass === repass)
-        dispatch(SignUp(getValue()));
+      if (pass === repass) dispatch(SignUp(getValue()));
       else alert("Please input password correctly.");
     }
-  }
+  };
 
   useEffect(() => {
-    if(company.length){
-      navigate('/' + company + '/admin');
+    if (company.length) {
+      navigate("/" + company + "/admin");
     }
-  }, [navigate, company])
+  }, [navigate, company]);
 
   useEffect(() => {
     setState(false);
@@ -76,13 +75,13 @@ export const RegisterPage = () => {
               <InputBox value={repass} func={setRePass} password />
             </>
           )}
-          {state === false &&
-            (<SubmitButton onClick={onSignin}> SignIn </SubmitButton>)
-          }
+          {state === false && (
+            <SubmitButton onClick={onSignin}> SignIn </SubmitButton>
+          )}
           <SubmitButton onClick={onSignup}> SignUp </SubmitButton>
-          {state === true &&
-            (<SubmitButton onClick={onSignin}> SignIn </SubmitButton>)
-          }
+          {state === true && (
+            <SubmitButton onClick={onSignin}> SignIn </SubmitButton>
+          )}
         </BoxContainer>
       </PageBox>
     </PageContainer>

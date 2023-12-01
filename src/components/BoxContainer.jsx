@@ -12,7 +12,6 @@ export const BoxContainer = ({ children }) => {
         sx={{
           p: { xs: "1rem", sm: "2rem" },
           borderRadius: "15px",
-          border: "1px solid #BFBFBF",
           color: "black"
         }}
       >

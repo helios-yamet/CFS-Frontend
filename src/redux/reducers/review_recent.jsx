@@ -1,9 +1,4 @@
 const initialState = [
-  {
-    rating: 3,
-    review: "Everything was good, but I have to wait a long time",
-    createdAt: "2003-03-03",
-  }
 ];;
 
 const getTimeAndDate = val => {

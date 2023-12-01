@@ -20,7 +20,7 @@ function App() {
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<LandingPage />} />
-              <Route path="/:id/admin/" element={<AdminPage />} />
+              <Route path="/:id/dashboard/" element={<AdminPage />} />
               <Route path="/:id/" element={<ClientPage />} />
               <Route path="/admin" element={<RegisterPage />} />
             </Routes>
