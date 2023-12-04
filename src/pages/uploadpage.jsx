@@ -26,9 +26,11 @@ export const UploadPage = () => {
         company: params.id,
         star: star,
         button: button,
-        manager: [managers],
+        manager: managers,
         googleId: 'http://search.google.com/local/writereview?placeid=' + goolgeId,
         logo: logo,
+        alertSMS: smsAlert,
+        alertEmail: emailAlert
       }
     );
   };
@@ -78,12 +80,14 @@ export const UploadPage = () => {
         id="starColorPicker"
         value={star}
         onChange={setStar}
+        label={star}
       />
       <Label text="Button Color" />
       <ColorPicker
         id="buttonColorPicker"
         value={button}
         onChange={color => setButton(color)}
+        label={button}
       />
       { managers.map( ( manager, index) =>
         <ManagerInfo key={index} rkey={index} array={managers} func={setManagers} />

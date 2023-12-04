@@ -13,7 +13,7 @@ import {
   PageContainer,
   PageBox,
 } from "../components";
-import { useNavigate, useParams, useLocation } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { exists } from "../redux/actions/user";
 
 export const ClientPage = () => {
@@ -40,8 +40,6 @@ export const ClientPage = () => {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
 
-  const location = useLocation();
-
   const onSubmitReview = () => {
     send(
       {
@@ -57,12 +55,14 @@ export const ClientPage = () => {
       }
     );
   };
+
   const onSubmitConfirm = () => {
     dispatch({
       type: "Status",
       payload: 0,
     });
   };
+
   const onSubmitInfo = () => {
     modify(
       {
@@ -84,20 +84,25 @@ export const ClientPage = () => {
   useEffect(() => {
     exists(
       params.id,
-      (result) => setExist(result + 1),
       (result) => {
         setGoogle(result.google);
         setLogo(result.logo);
         setStar(result.star);
         setButton(result.button);
-      }
+      },
+      (result) => setExist(result + 1),
     );
   }, [params.id]);
+
+  useEffect(() => {
+    console.log("EXIST", exist);
+    if(exist === 1) navigate("/" + params.id + "/admin");
+  }, [exist])
 
   return (
     <PageContainer>
       <PageBox>
-        {status === 0 && exist === 2 && (
+        {status === 0 && (
           <Homepage
             rating={rating}
             setRating={setRating}
@@ -108,7 +113,7 @@ export const ClientPage = () => {
             button={button}
           />
         )}
-        {status === 1 && exist === 2 && (
+        {status === 1 && (
           <GoogleReviewPage 
             hasGoogle={google} 
             button={button} 
@@ -116,7 +121,7 @@ export const ClientPage = () => {
             onSubmit={onSubmitReview}
           />
         )}
-        {status === 2 && exist === 2 && (
+        {status === 2 && (
           <ReviewPage
             logo={logo}
             rating={drating}
@@ -127,7 +132,7 @@ export const ClientPage = () => {
             button={button}
           />
         )}
-        {status === 3 && exist === 2 && (
+        {status === 3 && (
           <InfoPage
             logo={logo}
             name={sign}
@@ -140,13 +145,8 @@ export const ClientPage = () => {
             button={button}
           />
         )}
-        {status === 4 && exist === 2 && (
+        {status === 4 && (
           <ConfirmPage onSubmit={onSubmitConfirm} logo={logo} />
-        )}
-        {exist === 1 && (
-          <>
-            {navigate(location.pathname+"/admin")}
-          </>
         )}
       </PageBox>
     </PageContainer>

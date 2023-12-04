@@ -24,11 +24,12 @@ export const SignUp = (params) => (dispatch) => {
     .catch((error) => console.log(error));
 };
 
-export const exists = (params, callback) => {
+export const exists = (params, callback, status) => {
   axios
     .post("/company/exists", { company: params })
     .then((response) => {
       callback(response.data.data);
+      status(response.data.result);
     })
     .catch((error) => console.log(error));
 };
