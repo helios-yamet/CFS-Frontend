@@ -12,14 +12,14 @@ export const ClickButton = styled(Button)`
 `;
 
 export const SubmitButton = ( props ) => {
-  const { onClick, children, button } = props;
+  const { onClick, children, color } = props;
   return (
     <>
       <ClickButton
         sx={{
-          background: button, 
+          background: color, 
           ":hover":{
-            backgroundColor: button
+            backgroundColor: color
           }
         }}
         variant="contained"

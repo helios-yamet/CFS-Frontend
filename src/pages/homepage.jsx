@@ -42,7 +42,7 @@ export const Homepage = ( props ) => {
       
       <InputBox value={review} func={setReview} multiline placeholder="Additional comments or suggestions"/> */}
 
-      <SubmitButton onClick={onSubmit} button={button}>
+      <SubmitButton onClick={onSubmit} color={button}>
         Submit
       </SubmitButton>
     </BoxContainer>
