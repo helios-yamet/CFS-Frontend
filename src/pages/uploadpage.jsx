@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { exists } from "../redux/actions/user";
-import { Label, BoxContainer, SubmitButton, InputBox, PageContainer, PageBox } from '../components';
+import { Label, BoxContainer, SubmitButton, InputBox, PageContainer } from '../components';
 import ColorPicker from 'mui-color-picker'
 import { companyDetail } from "../redux/actions";
 import { ManagerInfo } from "../components/ManagerInfo";
