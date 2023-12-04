@@ -30,7 +30,7 @@ export const InfoPage = ( props ) => {
       <Label text="Phone" />
       <InputBoxPhone value={phone} func={setPhone} regexp={/^[+\-() \d]{10,}$/} />
 
-      <SubmitButton onClick={onClick} button={button}>
+      <SubmitButton onClick={onClick} color={button}>
         DONE
       </SubmitButton>
     </BoxContainer>

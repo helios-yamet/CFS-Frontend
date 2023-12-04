@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { exists } from "../redux/actions/user";
-import { Label, BoxContainer, SubmitButton } from '../components';
+import { Label, BoxContainer, SubmitButton, InputBox, PageContainer, PageBox } from '../components';
 import ColorPicker from 'mui-color-picker'
 import { companyDetail } from "../redux/actions";
 import { ManagerInfo } from "../components/ManagerInfo";
@@ -12,6 +12,8 @@ export const UploadPage = () => {
   const params = useParams();
 
   const [logo, setLogo] = useState('');
+  const [lock, setLock] = useState(false);
+  const [password, setPassword] = useState('');
   
   const [star, setStar] = useState('#1677ff');
   const [button, setButton] = useState('#1677ff');
@@ -19,6 +21,14 @@ export const UploadPage = () => {
   const [goolgeId, setGoogleId] = useState('');
   const [emailAlert, setEmailAlert] = useState(false);
   const [smsAlert, setSmsAlert] = useState(false);
+
+  const handleUnlock = () => {
+    if(password === "Leavefeedback2024$") {
+      setLock(true);
+    } else {
+      alert("Wrong password !");
+    }
+  }
 
   const onSubmitUpload = () => {
     companyDetail(
@@ -68,43 +78,55 @@ export const UploadPage = () => {
   }, [params.id]);
 
   return (
-    <BoxContainer>
-      <br />
-      {logo !== undefined && <img src={logo} style={{width: '350px'}} alt="Please upload company logo." />}
-      <br />
-      <br />
-      <input type="file" accept="image/*" onChange={handleImageUpload} />
-      
-      <Label text="Star Color" />
-      <ColorPicker
-        id="starColorPicker"
-        value={star}
-        onChange={setStar}
-        label={star}
-      />
-      <Label text="Button Color" />
-      <ColorPicker
-        id="buttonColorPicker"
-        value={button}
-        onChange={color => setButton(color)}
-        label={button}
-      />
-      { managers.map( ( manager, index) =>
-        <ManagerInfo key={index} rkey={index} array={managers} func={setManagers} />
-      )}
-      <br />
-      <Grid container spacing={2}>
-        <Grid item xs={6}>
-          <SubmitButton button={button} onClick={onSubmitUpload}>
-            Change
-          </SubmitButton>
-        </Grid>
-        <Grid item xs={6}>
-          <Checkbox checked={emailAlert} onChange={handleSetEmailAlert} style={{padding: "4px"}} />Send Email
-          <br />
-          <Checkbox checked={smsAlert} onChange={handleSetSmsAlert} style={{padding: "4px"}} />Send SMS
-        </Grid>
-      </Grid>
-    </BoxContainer>
+    <PageContainer>
+      <BoxContainer>
+        { lock
+            ? <>
+            <br />
+            {logo !== undefined && <img src={logo} style={{width: '350px'}} alt="Please upload company logo." />}
+            <br />
+            <br />
+            <input type="file" accept="image/*" onChange={handleImageUpload} />
+            
+            <Label text="Star Color" />
+            <ColorPicker
+              id="starColorPicker"
+              value={star}
+              onChange={setStar}
+              label={star}
+            />
+            <Label text="Button Color" />
+            <ColorPicker
+              id="buttonColorPicker"
+              value={button}
+              onChange={color => setButton(color)}
+              label={button}
+            />
+            { managers.map( ( manager, index) =>
+              <ManagerInfo key={index} rkey={index} array={managers} func={setManagers} />
+            )}
+            <br />
+            <Grid container spacing={2}>
+              <Grid item xs={6}>
+                <SubmitButton color={button} onClick={onSubmitUpload}>
+                  Change
+                </SubmitButton>
+              </Grid>
+              <Grid item xs={6}>
+                <Checkbox checked={emailAlert} onChange={handleSetEmailAlert} style={{padding: "4px"}} />Send Email
+                <br />
+                <Checkbox checked={smsAlert} onChange={handleSetSmsAlert} style={{padding: "4px"}} />Send SMS
+              </Grid>
+            </Grid>
+          </>
+          : <>
+            <InputBox type="password" value={password} func={setPassword} />
+            <SubmitButton color={button} onClick={handleUnlock}>
+              Unlock
+            </SubmitButton>
+          </>
+        }
+      </BoxContainer>
+    </PageContainer>
   );
 };

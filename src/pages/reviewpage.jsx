@@ -45,7 +45,7 @@ export const ReviewPage = ( props ) => {
 
       <InputBox value={review} func={setReview} multiline placeholder="Additional comments or suggestions"/>
 
-      <SubmitButton onClick={onClick} button={button} >
+      <SubmitButton onClick={onClick} color={button} >
         Submit
       </SubmitButton>
     </BoxContainer>

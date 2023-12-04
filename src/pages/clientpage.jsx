@@ -97,7 +97,7 @@ export const ClientPage = () => {
   useEffect(() => {
     console.log("EXIST", exist);
     if(exist === 1) navigate("/" + params.id + "/admin");
-  }, [exist])
+  }, [exist, navigate, params.id]);
 
   return (
     <PageContainer>

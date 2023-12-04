@@ -21,7 +21,7 @@ export const GoogleReviewPage = (props) => {
       {hasGoogle && (
         <>
           <Label text="Please leave a comment on Google, tell everyone what you liked.👇" />
-          <SubmitButton onClick={onClick} button={button}>
+          <SubmitButton onClick={onClick} color={button}>
             
             <img src={GoogleSearch} style={{ height: "25px"}} alt="Logo" />
             &nbsp;&nbsp;Review on Google
